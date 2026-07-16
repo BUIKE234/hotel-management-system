@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z(6_y!z^1egx#1vwz#mmig-0$iwr@gfgg6uw^c$q07u*3^_u*y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['hotelmanagementapp.onrender.com', 'localhost', '127.0.0.1']
 
@@ -74,13 +74,17 @@ WSGI_APPLICATION = 'hotelmanagementsystem.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+import dj_database_url
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DATABASES ={
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+    )
 }
+
+ALLOWED_HOSTS = ['*']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Password validation
