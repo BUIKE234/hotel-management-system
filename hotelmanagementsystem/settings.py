@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-z(6_y!z^1egx#1vwz#mmig-0$iwr@gfgg6uw^c$q07u*3^_u*y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['hotelmanagementapp.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['hotel-management-system-sffb.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -120,7 +120,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
+import dj_database_url
+import os
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
+}
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+ALLOWED_HOSTS = ['hotel-management-system-sffb.onrender.com', 'localhost', '127.0.0.1']
