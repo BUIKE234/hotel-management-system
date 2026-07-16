@@ -1,0 +1,141 @@
+:root {
+    --bg-start: #edf2ff;
+    --bg-end: #f8fbff;
+    --surface: rgba(255, 255, 255, 0.98);
+    --text: #1b2238;
+    --muted: #5f6f8d;
+    --accent: #667eea;
+    --accent-alt: #764ba2;
+    --border: rgba(102, 126, 234, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.page-wrapper {
+    width: 100%;
+    max-width: 520px;
+}
+
+.success-card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: 0 24px 60px rgba(26, 46, 102, 0.14);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.success-icon {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    box-shadow: 0 18px 35px rgba(102, 126, 234, 0.28);
+}
+
+.success-card h1 {
+    margin: 0 0 12px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    margin: 0 0 26px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.subtitle span {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.booking-details {
+    background: #f4f6ff;
+    border-radius: 20px;
+    padding: 22px 20px;
+    margin-bottom: 24px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.12);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row span {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.detail-row strong {
+    color: var(--text);
+    font-size: 0.98rem;
+}
+
+.note {
+    margin: 0 0 28px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    color: white;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 12px 26px rgba(102, 126, 234, 0.18);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(102, 126, 234, 0.23);
+}
+
+@media (max-width: 540px) {
+    .success-card {
+        padding: 28px 22px;
+    }
+
+    .booking-details {
+        padding: 18px 16px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

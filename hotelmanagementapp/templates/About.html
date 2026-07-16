@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>FGView</h1>
+            <p class="tagline">LUXURY HOTEL</p>
+        </div>
+        <nav >
+            <a href="{% url 'home' %}"  class="nav-link ">Home</a>
+            <a href="rooms.html" class="nav-link">Rooms</a>
+            <a href="#"   class="nav-link active">About us</a>
+            <a href="bookings.html" class="nav-link">Bookings</a>
+            <a href="contacts.html" class="nav-link">Contact</a>
+        </nav>
+        <a href="{% url 'book_room' %}" class="book-btn">Reserve Now</a>
+    </header>
+
+    <div class="about-container">
+        <!-- Header Section -->
+        <div class="about-header">
+            <h1>About Our Hotel</h1>
+            <p class="subtitle">Your Gateway to Comfort and Luxury</p>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="about-section">
+            <h2>Welcome to Excellence</h2>
+            <p>
+                Established with a passion for hospitality, our hotel has been serving guests with 
+                dedication and excellence for over a decade. We pride ourselves on delivering exceptional 
+                service and unforgettable experiences to every visitor who walks through our doors.
+            </p>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="about-section">
+            <h2>Our Story</h2>
+            <p>
+                Founded with a vision to redefine luxury hospitality, our hotel has grown from a modest 
+                establishment to a premier destination for travelers seeking comfort, elegance, and 
+                world-class service. Our journey has been marked by continuous improvement and a 
+                commitment to excellence in every aspect of our operations.
+            </p>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="about-section mission-vision">
+            <div class="mission">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide our guests with exceptional accommodations, outstanding service, and 
+                    memorable experiences that exceed their expectations and create lasting relationships.
+                </p>
+            </div>
+            <div class="vision">
+                <h3>Our Vision</h3>
+                <p>
+                    To be recognized as the leading hotel destination known for luxury, comfort, 
+                    innovation, and personalized hospitality in our region.
+                </p>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="about-section">
+            <h2>Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h4>🏆 Premium Accommodations</h4>
+                    <p>Luxurious rooms equipped with modern amenities and spectacular views.</p>
+                </div>
+                <div class="feature">
+                    <h4>👨‍💼 Expert Staff</h4>
+                    <p>Dedicated professionals committed to providing personalized service.</p>
+                </div>
+                <div class="feature">
+                    <h4>🍽️ Fine Dining</h4>
+                    <p>World-class restaurants and bars offering exquisite culinary experiences.</p>
+                </div>
+                <div class="feature">
+                    <h4>🏊 Premium Facilities</h4>
+                    <p>State-of-the-art spa, fitness center, and recreational facilities.</p>
+                </div>
+                <div class="feature">
+                    <h4>📍 Strategic Location</h4>
+                    <p>Perfectly situated near major attractions and business districts.</p>
+                </div>
+                <div class="feature">
+                    <h4>💼 Event Services</h4>
+                    <p>Comprehensive planning for conferences, weddings, and special events.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section class="about-section">
+            <h2>Our Leadership</h2>
+            <div class="leadership">
+                <p>
+                    Our hotel is proudly led by <strong>FAWAZ</strong> and <strong>GODSON</strong>, 
+                    whose visionary leadership and commitment to excellence have shaped our success and 
+                    established our reputation as a premier hospitality destination.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section class="about-cta">
+            <h2>Get in Touch</h2>
+            <p>Have questions or ready to book your stay? We'd love to hear from you!</p>
+            <div class="cta-buttons">
+                <a href="{% url 'contacts' %}" class="btn btn-primary">Contact Us</a>
+                <a href="{% url 'book_room' %}" class="btn btn-secondary">Book Now</a>
+            </div>
+        </section>
+    </div>
+    
+</body>
+</html>

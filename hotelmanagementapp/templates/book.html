@@ -1,0 +1,25 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book rooom</title>
+    <link rel="stylesheet" href="{% static 'css/book.css' %}">
+</head>
+<body>
+    <a href="{% url 'rooms' %}" ><button type="submit">back to rooms</button></a>
+    <div class="container">
+    <h3>Book a Room</h3>
+    <span>Fill your details to book your stay</span>
+    <br>
+    
+<br>
+<form method="POST" action="{% url 'book_room' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Book Now</button>
+</form>
+</div>
+</body>
+</html>

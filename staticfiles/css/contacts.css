@@ -1,0 +1,145 @@
+body {
+    background: #f8f7f2;
+}
+
+.contact-page {
+    padding: 0 0 60px;
+}
+
+.contact-hero {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(45, 45, 45, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.contact-hero-content {
+    max-width: 700px;
+    color: #ffffff;
+}
+
+.contact-hero-content h2 {
+    font-size: 42px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.contact-hero-content p {
+    font-size: 18px;
+    color: #e8e8e8;
+    line-height: 1.8;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: -40px auto 0;
+    padding: 0 30px;
+}
+
+.contact-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+}
+
+.contact-card h3 {
+    color: #1a1a1a;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-card p {
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+.hours-box {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid #ececec;
+}
+
+.hours-box h4 {
+    color: #d4af37;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.form-row input,
+.form-row textarea {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font: inherit;
+    color: #333;
+    background: #fcfcfc;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.contact-form button {
+    background: #d4af37;
+    color: #1a1a1a;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #c49b20;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-hero-content h2 {
+        font-size: 32px;
+    }
+
+    .contact-card {
+        padding: 25px;
+    }
+}
