@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +30,7 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -83,12 +84,26 @@ WSGI_APPLICATION = 'hotelmanagementsystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# Use DATABASE_URL if provided, otherwise fall back to local sqlite
-DATABASES = {
-    'default': dj_database_url.config(
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    database_config = dj_database_url.parse(
+        DATABASE_URL,
+        conn_max_age=600,
+        ssl_require=not DEBUG,
+    )
+    if database_config.get('ENGINE') == 'django.db.backends.postgresql' and not database_config.get('NAME'):
+        raise ImproperlyConfigured(
+            'DATABASE_URL is missing the database NAME. '
+            'Please set DATABASE_URL correctly in Render, including the database name path.'
+        )
+else:
+    database_config = dj_database_url.config(
         default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
         conn_max_age=600,
     )
+
+DATABASES = {
+    'default': database_config,
 }
 
 # Hosts and static
