@@ -84,26 +84,42 @@ WSGI_APPLICATION = 'hotelmanagementsystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL:
+DATABASE_URL = os.environ.get('DATABASE_URL') or os.environ.get('RENDER_DATABASE_URL')
+
+def _build_database_config():
+    if not DATABASE_URL:
+        return dj_database_url.config(
+            default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+            conn_max_age=600,
+        )
+
     database_config = dj_database_url.parse(
         DATABASE_URL,
         conn_max_age=600,
         ssl_require=not DEBUG,
     )
+
     if database_config.get('ENGINE') == 'django.db.backends.postgresql' and not database_config.get('NAME'):
-        raise ImproperlyConfigured(
-            'DATABASE_URL is missing the database NAME. '
-            'Please set DATABASE_URL correctly in Render, including the database name path.'
+        # Some Render setups provide a separate database name variable
+        database_name = (
+            os.environ.get('DB_NAME')
+            or os.environ.get('POSTGRES_DB')
+            or os.environ.get('RENDER_DATABASE_NAME')
         )
-else:
-    database_config = dj_database_url.config(
-        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
-        conn_max_age=600,
-    )
+        if database_name:
+            database_config['NAME'] = database_name
+        else:
+            # Fall back to sqlite when the external URL is incomplete.
+            # This prevents Render from crashing while the env var is fixed.
+            return dj_database_url.config(
+                default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+                conn_max_age=600,
+            )
+
+    return database_config
 
 DATABASES = {
-    'default': database_config,
+    'default': _build_database_config(),
 }
 
 # Hosts and static
