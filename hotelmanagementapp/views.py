@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Booking, RoomType
 from .forms import BookingForm
@@ -61,5 +61,5 @@ def book_room(request):
 
 
 def booking_success(request, booking_id):
-    booking = Booking.objects.get(id=booking_id)
+    booking = get_object_or_404(Booking, id=booking_id)
     return render(request, 'success.html', {'booking': booking})
